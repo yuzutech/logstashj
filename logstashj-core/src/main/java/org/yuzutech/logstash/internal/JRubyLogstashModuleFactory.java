@@ -30,9 +30,4 @@ class JRubyLogstashModuleFactory {
         InputStream inputStream = JRubyLogstashModuleFactory.class.getResourceAsStream("logstashclass.rb");
         return IOUtils.readFull(inputStream);
     }
-
-    public Ruby runtime() {
-        return this.runtime;
-    }
-
 }

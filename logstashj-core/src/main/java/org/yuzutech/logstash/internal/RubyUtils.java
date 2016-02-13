@@ -15,8 +15,7 @@ public class RubyUtils {
     }
 
     public static RubySymbol toSymbol(Ruby rubyRuntime, String key) {
-        RubySymbol newSymbol = RubySymbol.newSymbol(rubyRuntime, key);
-        return newSymbol;
+        return RubySymbol.newSymbol(rubyRuntime, key);
     }
 
     public static RubyClass toRubyClass(Ruby rubyRuntime, Class<?> rubyClass) {
@@ -32,7 +31,7 @@ public class RubyUtils {
         rubyRuntime.evalScriptlet(script);
     }
 
-    public static final void setGlobalVariable(Ruby rubyRuntime, String variableName, Object variableValue) {
+    public static void setGlobalVariable(Ruby rubyRuntime, String variableName, Object variableValue) {
         String script = String.format("$%s = %s", variableName, variableValue);
         rubyRuntime.evalScriptlet(script);
     }

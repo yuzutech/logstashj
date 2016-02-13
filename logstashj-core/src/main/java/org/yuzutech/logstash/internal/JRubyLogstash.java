@@ -1,5 +1,6 @@
 package org.yuzutech.logstash.internal;
 
+import org.jruby.RubyObject;
 import org.yuzutech.logstash.Logstash;
 import org.jruby.CompatVersion;
 import org.jruby.Ruby;
@@ -114,5 +115,10 @@ public class JRubyLogstash implements Logstash {
     @Override
     public void logstashAgent(String filePath) {
         this.logstashModule.logstashAgent(filePath);
+    }
+
+    @Override
+    public RubyObject sample(String config, String event) {
+        return this.logstashModule.sample(config, event);
     }
 }

@@ -1,5 +1,6 @@
 package org.yuzutech.logstash;
 
+import org.jruby.RubyObject;
 import org.yuzutech.logstash.internal.JRubyLogstash;
 
 import java.util.List;
@@ -14,9 +15,19 @@ public interface Logstash {
     /**
      * Run Logstash agent with the config file
      *
-     * @param filePath path to the config path
+     * @param configPath path to the config
      */
-    void logstashAgent(String filePath);
+    void logstashAgent(String configPath);
+
+
+    /**
+     * Send an event against the config
+     * FIXME: Return a "Java" LogstashEvent
+     *
+     * @param config config
+     * @param event event
+     */
+    RubyObject sample(String config, String event);
 
     /**
      * Factory for creating a new instance of Logstash interface.
