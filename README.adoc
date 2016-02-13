@@ -1,0 +1,2 @@
+= LogstashJ: Java bindings for Logstash
+Guillaume Grossetie <https://github.com/Mogztter[@Mogztter]>

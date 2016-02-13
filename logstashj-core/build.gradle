@@ -1,0 +1,57 @@
+dependencies {
+  compile "org.jruby:jruby-complete:$jrubyVersion"
+  gems "rubygems:logstash-core:$logstashGemVersion"
+  gems("rubygems:cabin:0.7.1")
+  gems("rubygems:jls-grok:0.11.2") {
+    exclude module: 'cabin'
+  }
+  // Patterns
+  gems("rubygems:logstash-patterns-core:0.4.0") {
+    exclude module: 'logstash-core'
+  }
+  // Inputs
+  gems("rubygems:logstash-input-generator:1.0.0") {
+    exclude module: 'logstash-core'
+    exclude module: 'logstash-codec-plain'
+  }
+  // Filters
+  gems("rubygems:logstash-filter-mutate:1.0.2") {
+    exclude module: 'logstash-core'
+    exclude module: 'logstash-filter-grok'
+    exclude module: 'logstash-patterns-core'
+  }
+  gems("rubygems:logstash-filter-grok:1.0.0") {
+    exclude module: 'logstash-core'
+    exclude module: 'logstash-patterns-core'
+    exclude module: 'jls-grok'
+  }
+  // Outputs
+  gems("rubygems:logstash-output-stdout:1.1.0") {
+    exclude module: 'logstash-core'
+    exclude module: 'logstash-codec-line'
+  }
+  // Codecs
+  gems("rubygems:logstash-codec-line:1.0.0") {
+    exclude module: 'logstash-core'
+  }
+  gems("rubygems:logstash-codec-json:1.1.0") {
+    exclude module: 'logstash-core'
+  }
+  gems ("rubygems:logstash-codec-plain:1.0.0") {
+    exclude module: 'logstash-core'
+  }
+  testCompile "com.google.guava:guava:$guavaVersion"
+}
+
+def gemFiles = fileTree(jruby.gemInstallDir) {
+  include 'specifications/*.gemspec'
+  include 'gems/*/lib/**'
+  include 'gems/*/locales/**'
+}
+
+jrubyPrepareGems << {
+  copy { // bundles the gems inside this artifact
+    from gemFiles
+    into sourceSets.main.output.resourcesDir
+  }
+}

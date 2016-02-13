@@ -1,0 +1,6 @@
+rootProject.name = 'logstashj'
+
+include \
+  'logstashj'
+
+project(':logstashj').projectDir = file('logstashj-core')
