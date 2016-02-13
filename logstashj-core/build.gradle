@@ -1,6 +1,9 @@
 dependencies {
   compile "org.jruby:jruby-complete:$jrubyVersion"
-  gems "rubygems:logstash-core:$logstashGemVersion"
+  gems ("rubygems:logstash-core:$logstashGemVersion") {
+    exclude module: 'stud'
+  }
+  gems ("rubygems:stud:0.0.21")
   gems("rubygems:cabin:0.7.1")
   gems("rubygems:jls-grok:0.11.2") {
     exclude module: 'cabin'

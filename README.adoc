@@ -1,2 +1,17 @@
 = LogstashJ: Java bindings for Logstash
 Guillaume Grossetie <https://github.com/Mogztter[@Mogztter]>
+
+[caption=Status]
+CAUTION: LogstashJ is at an early stage of development.
+For now this project is a proof of concept but I plan to release an alpha version when `LogStash::Agent.new` binding will be fully working.
+
+
+== Building
+
+You can invoke Gradle on this project using the `gradlew` command (i.e., the Gradle Wrapper).
+
+To clone the project and build the project locally, run:
+
+ $ git clone https://github.com/asciidoctor/asciidoctorj
+   cd logstashj
+   ./gradlew

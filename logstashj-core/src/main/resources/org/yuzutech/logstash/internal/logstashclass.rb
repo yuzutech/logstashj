@@ -5,6 +5,7 @@ require 'logstash/inputs/generator'
 require 'logstash/filters/base'
 require 'logstash/filters/mutate'
 require 'logstash/outputs/stdout'
+require 'stud/trap'
 
 class LogstashModule
   java_implements Java::LogstashModule
